@@ -107,10 +107,14 @@ class EditRawMaterial extends AUTH_Controller {
 
 	public function delete() {
 		$id = $_POST['id'];
-		$result = $this->M_rawmaterial->delete($id);
+		
+		$result = $this->M_rawmaterial->updateStockcopy($id);
 
 		if ($result > 0) {
+		    $resultD = $this->M_rawmaterial->srdelete($id);
+		    if ($resultD > 0) {
 			echo show_succ_msg('Product Deleted', '20px');
+		    }
 		} else {
 			echo show_err_msg('Failed to Delete Product', '20px');
 		}

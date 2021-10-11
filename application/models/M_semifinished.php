@@ -62,7 +62,7 @@ class M_semifinished extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function delete($id) {
+	public function smdelete($id) {
 	    
 		$sql = "DELETE FROM stock_semifinished WHERE rstock_id='" .$id ."'";
        

@@ -110,7 +110,7 @@ class EditSemifinished extends AUTH_Controller {
 		$result = $this->M_semifinished->updateStockcopy($id);
 
 		if ($result > 0) {
-		   $resultU = $this->M_semifinished->delete($id);
+		   $resultU = $this->M_semifinished->smdelete($id);
 		    if($resultU > 0){
 			echo show_succ_msg('Product Deleted', '20px');
 		}} else {

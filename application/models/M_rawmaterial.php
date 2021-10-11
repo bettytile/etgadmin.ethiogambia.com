@@ -62,7 +62,7 @@ class M_rawmaterial extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function delete($id) {
+	public function srdelete($id) {
 	    
 		$sql = "DELETE FROM stock_rawmaterial WHERE rstock_id='" .$id ."'";
        

@@ -110,7 +110,7 @@ class EditStock extends AUTH_Controller {
 		$result = $this->M_stockreport->updateStockcopy($id);
 
 		if ($result > 0) {
-		   $resultU = $this->M_stockreport->delete($id);
+		   $resultU = $this->M_stockreport->sdelete($id);
 		    if($resultU > 0){
 			echo show_succ_msg('Product Deleted', '20px');
 		}} else {

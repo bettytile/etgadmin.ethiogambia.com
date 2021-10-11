@@ -50,7 +50,7 @@ class M_stockreport extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function delete($id) {
+	public function sdelete($id) {
 		$sql = "DELETE FROM stock WHERE stock_id='" .$id ."'";
 
 		$this->db->query($sql);

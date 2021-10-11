@@ -70,7 +70,7 @@ class M_confirmation extends CI_Model {
 
 		return $this->db->affected_rows();
 	}
-	public function delete($id) {
+	public function pdelete($id) {
 		$sql = "DELETE FROM production WHERE production_id='" .$id ."'";
 
 		$this->db->query($sql);
@@ -116,11 +116,11 @@ class M_confirmation extends CI_Model {
 		//$id = $_POST['id'];
 		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 		$select = "SELECT * FROM production WHERE production_id ='" .$id ."'";
-		$sel = "SELECT * FROM stock WHERE stock.reference_no = production.reference_no";
 		$run = mysqli_query($con,$select);
+		$row=mysqli_fetch_array($run);
+		$sel = "SELECT * FROM stock WHERE stock.reference_no = '".$row['reference_no']."'";
 		$runs = mysqli_query($con,$sel);
 		$rows=mysqli_fetch_array($runs);
-		$row=mysqli_fetch_array($run);
 		if($rows > 0){
 		    $query = "SELECT * FROM stock_copy WHERE stock_copy.id_product= '".$rows['id_product']."' AND stock_copy.id_station ='".$rows['id_station']."'";
 		    $excute_query = mysqli_query($con,$query);

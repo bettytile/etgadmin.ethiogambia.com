@@ -138,7 +138,7 @@ class EditProduction extends AUTH_Controller {
 		$result = $this->M_confirmation->updateStoke($id);
 
 		if ($result > 0) {
-		   $resultU = $this->M_confirmation->delete($id);
+		   $resultU = $this->M_confirmation->pdelete($id);
 		    if($resultU > 0){
 			echo show_succ_msg('Product Deleted', '20px');
 		}} else {
