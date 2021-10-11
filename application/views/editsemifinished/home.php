@@ -12,8 +12,8 @@ if(isset($_POST['find'])){
                   $tdate=$_POST['to'];
                   $station = $_POST['station'];
           
-                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
-                 $sel="SELECT * FROM stock_semifinished,station WHERE stock_semifinished.store_location=station.s_id AND stock_semifinished.store_location='".$station."' AND stock_semifinished.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY stock_semifinished.activity_date DESC";
+                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
+                  $sel="SELECT * FROM stock_semifinished,station WHERE stock_semifinished.store_location=station.s_id AND stock_semifinished.store_location='".$station."' AND stock_semifinished.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY stock_semifinished.activity_date DESC";
                  
                 //   $sql = "SELECT stock_semifinished.rstock_id AS id, stock_semifinished.raw_material_type AS raw_material_type,stock_semifinished.product_code AS code, stock_semifinished.id_employee AS employee,stock_semifinished.received_qty AS received_qty,stock_semifinished.issued_qty AS issued_qty,stock_semifinished.id_station AS id_station, stock_semifinished.available_qtys AS available_qty, stock_semifinished.reference_no AS reference_no, stock_semifinished.activity_date AS activity_date, stock_semifinished.rstatus AS rstatus,stock_semifinished.warehouse AS warehouse,stock_semifinished.store_location AS station, station.station_name AS station FROM stock_semifinished, station WHERE stock_semifinished.store_location=station.s_id AND stock_semifinished.store_location='".$station."' AND stock_semifinished.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY stock_semifinished.activity_date DESC";
                   

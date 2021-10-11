@@ -83,7 +83,7 @@ class M_confirmation extends CI_Model {
 		$p_code_n_id = $data['id_product'];
 		$resultexp = explode('|',$p_code_n_id);
 		$id_products = $resultexp[1];
-		$con = mysqli_connect("localhost","root","","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 		$select = "SELECT * FROM stock WHERE stock.id_product='" .$id_products ."'";
 		$run = mysqli_query($con,$select);
   		$row= mysqli_fetch_array($run);
@@ -114,7 +114,7 @@ class M_confirmation extends CI_Model {
 	}
 	public function updateStoke($id) {
 		//$id = $_POST['id'];
-		$con = mysqli_connect("localhost","root","","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 		$select = "SELECT * FROM production WHERE production_id ='" .$id ."'";
 		$sel = "SELECT * FROM stock WHERE stock.reference_no = production.reference_no";
 		$run = mysqli_query($con,$select);
@@ -144,7 +144,7 @@ class M_confirmation extends CI_Model {
 	}
 	public function updateStokeRm($id) {
 		//$id = $_POST['id'];
-		$con = mysqli_connect("localhost","root","","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 		$select = "SELECT * FROM production WHERE production_id ='" .$id ."'";
 		$sel = "SELECT * FROM stock_rawmaterial WHERE stock_rawmaterial.reference_no = production.reference_no";
 		$run = mysqli_query($con,$select);
@@ -196,7 +196,7 @@ class M_confirmation extends CI_Model {
 		return $data->num_rows();
 	}
 		public function updateStockcopy($id){
-	    $con = mysqli_connect("localhost","ethiogam","Mymymy@13","cendana") or die("Connection could not be Established");
+			$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 	    
 	    $sqls= "SELECT production_id,reference_no, produced_qty,id_station,id_product FROM production WHERE production.production_id = '".$id."'";
 	    $run = mysqli_query($con, $sqls) or die("Error: ".mysqli_error($con));

@@ -46,7 +46,7 @@ class M_stockConfirmation extends CI_Model {
 			}
 	public function select_all_rawmaterial($data) {
 		$station = $data['station'];
-		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 
 		$sql = "SELECT * FROM stock WHERE stock.id_station = '".$station."' ";
 
@@ -87,7 +87,7 @@ class M_stockConfirmation extends CI_Model {
 			return $this->db->affected_rows();
 	}
 	public function updateIssue($data) {
-		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 		$p_code_n_id = $data['p_code_n_id'];
 		$resultexpl = explode('|', $p_code_n_id);
 		$products = $resultexpl[1];
@@ -113,7 +113,7 @@ class M_stockConfirmation extends CI_Model {
 	}
 
 	public function delete($id) {
-		 $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
     $query ="SELECT * FROM pending WHERE pending.stock_id='".$id."'";
     
     
@@ -250,7 +250,7 @@ class M_stockConfirmation extends CI_Model {
 
 public function directUpdate($id) {
     
-    $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+    $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
     $query ="SELECT * FROM pending WHERE pending.stock_id='".$id."'";
     
     
@@ -324,7 +324,7 @@ else{
 	public function insert($data) {
         // $id = md5(DATE('ymdhms').rand());
         $product_status = $data['rstatus'];
-        $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
         if ($product_status == "received") {
             $id_products = $data['id_product'];
 			$station = $data['station'];
@@ -361,7 +361,7 @@ else{
 		// $id = md5(DATE('ymdhms').rand());
 		
         $product_status = $data['rstatus'];
-        $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
         if ($product_status == "issued") {
 			$p_code_n_id = $data['p_code_n_id'];
 			$resultexp = explode('|',$p_code_n_id);

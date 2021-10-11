@@ -71,7 +71,7 @@ class M_rawmaterial extends CI_Model {
 		return $this->db->affected_rows();
 	}
 	public function updateStockcopy($id){
-	    $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 	    $sqls= "SELECT * FROM stock_rawmaterial WHERE rstock_id =(select max(rstock_id) from stock_rawmaterial where rstock_id < '" .$id ."')";
 	    $run = mysqli_query($con, $sqls) or die("Error: ".mysqli_error($con));
         $row= mysqli_fetch_array($run);
@@ -82,7 +82,7 @@ class M_rawmaterial extends CI_Model {
 
 	public function insert($data) {
         // $id = md5(DATE('ymdhms').rand());
-        $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
         $activity_date = DATE('dmyhms');
         $rawm_type = $data['rawm_type'];
 		$sql = "SELECT * FROM stock_rawmaterial WHERE raw_material_type= '".$rawm_type."'";

@@ -12,7 +12,7 @@ if(isset($_POST['find'])){
                   $tdate=$_POST['to'];
                   $station = $_POST['station'];
           
-                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
                  
                  
                   $sql = " SELECT stock_rawmaterial.rstock_id AS id, stock_rawmaterial.raw_material_type AS raw_material_type, stock_rawmaterial.product_code AS product_code, stock_rawmaterial.id_employee AS employee,stock_rawmaterial.received_qty AS received_qty,stock_rawmaterial.issued_qty AS issued_qty,stock_rawmaterial.id_station AS id_station, stock_rawmaterial.available_qtys AS available_qty, stock_rawmaterial.reference_no AS reference_no, stock_rawmaterial.activity_date AS activity_date, stock_rawmaterial.rstatus AS rstatus,stock_rawmaterial.input_type AS input_type,stock_rawmaterial.warehouse AS warehouse,stock_rawmaterial.store_location AS store_location, raw_material.rawmaterial_code AS code , station.station_name AS station FROM stock_rawmaterial, raw_material, station WHERE  stock_rawmaterial.raw_material_type =raw_material.rm_id AND stock_rawmaterial.store_location=station.s_id AND stock_rawmaterial.store_location= '".$station."' AND stock_rawmaterial.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY stock_rawmaterial.activity_date DESC";

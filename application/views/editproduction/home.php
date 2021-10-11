@@ -13,7 +13,7 @@ if(isset($_POST['find'])){
                   $tdate=$_POST['to'];
                   $station = $_POST['station'];
           
-                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
                  
                  
                   $sql = "SELECT production_id,product_code, preform_code, rawmaterial_code,reference_no,qty_produced,qty_damaged,received_weight,left_weight,shift,station_name,activity_date FROM (SELECT production_id,id_product,id_production_type,id_preform,product_code, id_raw_material,reference_no,qty_produced,qty_damaged,received_weight,left_weight,shift,id_station,activity_date FROM production) p LEFT JOIN (SELECT prod_id, product_name FROM product) f ON p.id_product = f.prod_id LEFT JOIN (SELECT pre_id, preform_code, preform_name FROM preform) pr ON p.id_preform = pr.pre_id LEFT JOIN (SELECT rm_id,rawmaterial_code, rawmaterial_name FROM raw_material) r ON p.id_raw_material = r.rm_id LEFT JOiN (SELECT s_id,station_name FROM station) s ON p.id_station=s.s_id WHERE p.id_station= '".$station."' AND p.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY p.activity_date DESC";

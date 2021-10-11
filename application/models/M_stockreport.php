@@ -65,7 +65,7 @@ class M_stockreport extends CI_Model {
 		return $this->db->affected_rows();
 	}
 	public function updateStockcopy($id){
-	    $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+		$con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
 	    $sqls= "SELECT stock_id, available_product,id_station,id_product FROM stock WHERE stock.stock_id = '".$id."'";
 	    $run = mysqli_query($con, $sqls) or die("Error: ".mysqli_error($con));
         $row= mysqli_fetch_array($run);

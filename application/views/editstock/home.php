@@ -12,7 +12,7 @@ if(isset($_POST['find'])){
                   $tdate=$_POST['to'];
                   $station = $_POST['station'];
           
-                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
+                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
                  
                  
                   $sql = "SELECT stock.stock_id AS id, stock.id_product AS id_product, stock.product_type AS p_type,stock.product_code AS code,stock.id_station AS id_station,stock.to_station AS station,station.station_name AS station, stock.available_product AS available_product, stock.reference_no AS reference_no, stock.received_qty AS received_qty, stock.issued_qty AS issued_qty, stock.s_status AS s_status, stock.activity_date AS activity_date, product.product_code AS code FROM stock, product,station WHERE product.prod_id=stock.id_product AND station.s_id=stock.id_station AND stock.id_station='".$station."' AND stock.activity_date BETWEEN '".$fdate."' AND '".$tdate."' ORDER BY stock.activity_date DESC";

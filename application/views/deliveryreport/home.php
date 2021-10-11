@@ -6,8 +6,8 @@
     $outputs='';
     $i = 0;
           if (isset($_POST['find'])) {
-                  $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","cendana") or die("Connection could not be Established");
-                  $fdate=$_POST['from'];
+            $con = mysqli_connect("cendana.c0l5un2vhvyo.us-east-2.rds.amazonaws.com","admin","#root321","3306","cendana") or die("Connection could not be Established");
+            $fdate=$_POST['from'];
                   $tdate=$_POST['to'];
                   $customer=$_POST['id_customer'];
                   $station = $_POST['station'];
