@@ -6,7 +6,7 @@ class M_auth extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('admin');
 		$this->db->where('username', $user);
-		$this->db->where('password', 'ETGsys@admin');
+		$this->db->where('password', 'admin');
 
 		$data = $this->db->get();
 
