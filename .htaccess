@@ -1,23 +1,8 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+Options +FollowSymlinks -Indexes
+RewriteEngine on
 
-    # NOTICE: If you get a 404 play with combinations of the following commented out lines
-    # AllowOverride All
-    RewriteBase /
-
-    # Make sure directory listing is disabled
-    Options +FollowSymLinks -Indexes
-
-    RewriteCond %{REQUEST_URI} ^system.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-    RewriteCond %{REQUEST_URI} ^application.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-    RewriteCond %{REQUEST_URI} ^asset.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php?/$1 [L]
-</IfModule>
+DirectoryIndex index.php
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
