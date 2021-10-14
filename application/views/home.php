@@ -4,7 +4,7 @@
       <div class="inner">
         <h3><?php echo $jml_pegawai; ?></h3>
 
-        <p>Registerd Employees</p>
+        <p>Registerd Employee</p>
       </div>
       <div class="icon">
         <i class="ion ion-ios-contact"></i>
