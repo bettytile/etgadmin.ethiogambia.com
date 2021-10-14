@@ -11,7 +11,7 @@ class Auth extends CI_Controller {
 		$session = $this->session->userdata('status');
 
 		if ($session == '') {
-			$this->load->view('home');
+			$this->load->view('login');
 		} else {
 			redirect('Home');
 		}
@@ -29,7 +29,7 @@ class Auth extends CI_Controller {
 
 			if ($data == false) {
 				$this->session->set_flashdata('error_msg', 'Username / Password not correct.');
-				redirect('Home');
+				redirect('Auth');
 			} else {
 				$session = [
 					'userdata' => $data,
@@ -40,13 +40,13 @@ class Auth extends CI_Controller {
 			}
 		} else {
 			$this->session->set_flashdata('error_msg', validation_errors());
-			redirect('Home');
+			redirect('Auth');
 		}
 	}
 
 	public function logout() {
 		$this->session->sess_destroy();
-		redirect('Home');
+		redirect('Auth');
 	}
 }
 
