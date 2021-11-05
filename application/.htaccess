@@ -2,21 +2,14 @@
 RewriteEngine On
 
 RewriteCond %{REQUEST_URI} ^system.*
-RewriteRule ^(.*)$ index.php?/$1 [L]
+Options +FollowSymlinks -Indexes
+RewriteEngine on
 
-RewriteCond %{REQUEST_URI} ^LoginTut.*
-RewriteRule ^(.*)$ index.php?/$1 [L]
-
-#Checks to see if the user is attempting to access a valid file,
-#such as an image or css document, if this isn't true it sends the
-#request to index.php
+DirectoryIndex index.php
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?$1 [L]
-</IfModule>
-<IfModule !mod_rewrite.c>
- ErrorDocument 404 index.php
-</IfModule>
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
 <FilesMatch ".(eot|ttf|otf|woff)">
     Header set Access-Control-Allow-Origin "*"
 </FilesMatch>
