@@ -17,3 +17,6 @@ RewriteRule ^(.*)$ index.php?$1 [L]
 <IfModule !mod_rewrite.c>
  ErrorDocument 404 index.php
 </IfModule>
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
